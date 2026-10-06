@@ -182,7 +182,7 @@ export function S19() {
           <div className="mt-4 grid grid-cols-6 gap-2">
             {flow.map((c, n) => (
               <div key={c} className="relative">
-                <div className="bar-y mx-auto w-full rounded-t-md" style={{ height: [60, 110, 150, 90, 40, 20][n], background: n < 3 ? "var(--primary)" : "var(--destructive)", ...i(n) }} />
+                <div className="flex h-[180px] items-end"><div className={`bar-y w-full rounded-t-md ${n < 3 ? "bg-primary" : "bg-destructive"}`} style={{ height: [70, 120, 175, 110, 55, 30][n], ...i(n) }} /></div>
                 <div className="mt-2 text-center text-[18px]">{c}</div>
               </div>
             ))}
