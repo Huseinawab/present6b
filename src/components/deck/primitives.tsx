@@ -66,3 +66,22 @@ export function Takeaway({ children, label = "Managerial takeaway" }: { children
     </div>
   );
 }
+
+export function Tag({ kind }: { kind: "textbook" | "current" }) {
+  return kind === "textbook" ? (
+    <span className="chip text-taupe">Textbook concept</span>
+  ) : (
+    <span className="chip text-gold">Current example · verified</span>
+  );
+}
+
+export function Block({ label, title, children, tone = "cream", className = "", n = 0 }: { label?: string; title?: ReactNode; children: ReactNode; tone?: "cream" | "panel"; className?: string; n?: number }) {
+  const dark = tone === "panel";
+  return (
+    <div className={`anim ${tone} p-5 ${className}`} style={i(n)}>
+      {label && <div className={`slide-label text-[12px] ${dark ? "text-primary" : "text-primary"}`}>{label}</div>}
+      {title && <div className="mt-1 text-[22px] font-semibold leading-tight">{title}</div>}
+      <div className={`mt-2 text-[17px] leading-snug ${dark ? "text-muted-foreground" : "text-ink-soft"}`}>{children}</div>
+    </div>
+  );
+}

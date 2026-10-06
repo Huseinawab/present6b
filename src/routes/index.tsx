@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import * as A from "@/components/deck/slides-a";
 import * as B from "@/components/deck/slides-b";
+import * as C from "@/components/deck/slides-c";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/")({
   component: Deck,
 });
 
-const SLIDES = [A.S01, A.S02, A.S03, A.S04, A.S05, A.S06, A.S07, A.S08, A.S09, A.S10, A.S11, B.S12, B.S13, B.S14, B.S15, B.S16, B.S17, B.S18, B.S19, B.S20, B.S21, B.S22, B.S23];
+const SLIDES = [A.S01, A.S02, A.S03, A.S04, A.S05, A.S06, A.S07, A.S08, B.S09, B.S10, B.S11, B.S12, B.S13, B.S14, B.S15, B.S16, C.S17, C.S18, C.S19, C.S20, C.S21, C.S22, C.S23];
 const W = 1600;
 const H = 900;
 
