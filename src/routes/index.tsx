@@ -47,7 +47,7 @@ function Deck() {
     else document.documentElement.requestFullscreen?.();
   };
 
-  const Slide = SLIDES[idx];
+  const Slide = SLIDES[idx] ?? A.S01;
   return (
     <div ref={root} className="flex h-screen w-screen flex-col overflow-hidden bg-background">
       <div className="flex flex-1 items-center justify-center">
