@@ -1,11 +1,7 @@
+import { Fragment } from "react";
 import cover from "@/assets/cover.jpg";
 import gold from "@/assets/gold.jpg";
-import currencies from "@/assets/currencies.jpg";
-import { Fragment } from "react";
-import { Arrow, Frame, Takeaway, TB11, TOTAL, i } from "./primitives";
-
-const P1 = "Presenter 01";
-const P2 = "Presenter 02";
+import { Arrow, Block, Frame, Tag, Takeaway, TB11, TOTAL, i } from "./primitives";
 
 export function Divider({ n, title, sub, img, page, presenter }: { n: string; title: string[]; sub: string; img: string; page: number; presenter: string }) {
   return (
@@ -35,22 +31,22 @@ export function S01() {
         <div className="anim flex items-center gap-6" style={i(0)}>
           <span className="slide-label text-gold">International Business</span>
           <span className="h-px w-16 bg-gold" />
-          <span className="slide-label">Chapter 11 &amp; 12</span>
+          <span className="slide-label">Chapter 11 &amp; Chapter 12</span>
         </div>
         <div>
           <h1 className="anim headline text-[104px] uppercase" style={i(1)}>
             The Global Monetary System
             <span className="block text-primary">&amp; Global Capital Market</span>
           </h1>
-          <p className="anim mt-8 max-w-[1000px] text-[28px] leading-snug text-muted-foreground" style={i(2)}>
-            How exchange rates, financial institutions, and global capital shape international business
+          <p className="anim mt-8 max-w-[1050px] text-[28px] leading-snug text-muted-foreground" style={i(2)}>
+            How exchange rates, international institutions, and global capital shape international business
           </p>
         </div>
-        <div className="anim grid grid-cols-4 gap-8 border-t border-line pt-6" style={i(3)}>
-          {[["Course", "International Business"], ["Group", "Group Name · Members"], ["University", "University Name"], ["Lecturer", "Lecturer Name"]].map(([k, v]) => (
+        <div className="anim grid grid-cols-3 gap-8 border-t border-line pt-6" style={i(3)}>
+          {[["Group", "[GROUP MEMBERS]"], ["University", "Universitas Indonesia"], ["Lecturer", "[LECTURER]"]].map(([k, v]) => (
             <div key={k}>
               <div className="slide-label text-[12px]">{k}</div>
-              <div className="mt-1 text-[20px]">{v}</div>
+              <div className="mt-1 text-[22px]">{v}</div>
             </div>
           ))}
         </div>
@@ -60,40 +56,35 @@ export function S01() {
 }
 
 export function S02() {
-  const steps = [
-    ["International Monetary System", "Rules that govern exchange rates", "Ch. 11"],
-    ["Exchange Rates", "The price of one currency in another", "Ch. 11"],
-    ["Cross-Border Trade & Investment", "Firms price, source and invest abroad", "Link"],
-    ["Global Capital Markets", "Borrowers and investors meet across borders", "Ch. 12"],
-    ["Corporate Financing & Management", "Where, how, and in which currency to raise money", "Ch. 12"],
+  const nodes = [
+    ["Global monetary system", "Sets the rules of the environment in which currencies interact — fixed, floating, or managed."],
+    ["Exchange rates", "Change a firm’s prices, revenue, costs and competitiveness in every foreign market."],
+    ["Global capital markets", "Determine where — and in which currency — companies can raise financing."],
+    ["Financial risk", "Determines whether apparently cheap financing is actually cheap once currencies move."],
   ];
   return (
-    <Frame page={2} section="The Big Picture" presenter={P1} source={TB11 + " & 12"} title="The system behind global business">
-      <div className="grid h-full grid-cols-[1fr_440px] gap-14">
+    <Frame page={2} section="Why This Matters" source={TB11 + " & 12"} title="Why should an international business student care?">
+      <div className="grid h-full grid-cols-[480px_1fr] gap-12">
         <div className="flex flex-col justify-between">
-          {steps.map(([t, d, tag], n) => (
-            <div key={t} className="anim flex items-center gap-6" style={i(n + 1)}>
-              <span className="w-10 font-mono text-[18px] text-gold">0{n + 1}</span>
-              <div className={`cream flex flex-1 items-center justify-between px-7 py-4 ${n === 2 ? "bg-secondary" : ""}`} style={{ marginLeft: n * 36 }}>
-                <div>
-                  <div className="text-[26px] font-semibold">{t}</div>
-                  <div className="text-[18px] text-ink-soft">{d}</div>
-                </div>
-                <span className="chip text-ink-soft">{tag}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-col justify-center gap-10">
-          <div className="anim" style={i(6)}>
-            <div className="slide-label text-gold">Central question</div>
-            <p className="headline mt-4 text-[36px] italic leading-tight">
-              “How do countries and companies move money across borders without losing control of value, stability, or risk?”
+          <div className="anim cream p-7" style={i(1)}>
+            <div className="slide-label text-[12px] text-primary">A business scenario</div>
+            <p className="mt-3 font-display text-[28px] leading-snug">
+              “A company can have a profitable product, strong demand, and cheap financing — yet still lose money because the exchange rate moves against it.”
             </p>
           </div>
-          <div className="anim border-t border-line pt-6 text-[20px] leading-relaxed text-muted-foreground" style={i(7)}>
-            <span className="text-foreground">Why together?</span> Chapter 11 sets the <em>rules of value</em> (exchange-rate regimes, IMF). Chapter 12 shows how firms <em>raise and move capital</em> inside those rules — and carry their risk.
+          <div className="anim border-l-2 border-gold pl-6" style={i(6)}>
+            <p className="font-display text-[24px] italic leading-snug">International business is not only about selling across borders. It is also about <span className="text-gold">managing the value of money across borders.</span></p>
           </div>
+        </div>
+        <div className="grid grid-cols-2 grid-rows-2 gap-5">
+          {nodes.map(([t, d], n) => (
+            <div key={t} className="anim panel relative flex flex-col p-6" style={i(n + 2)}>
+              <span className="font-mono text-[15px] text-gold">0{n + 1}</span>
+              <div className="headline mt-2 text-[32px]">{t}</div>
+              <p className="mt-3 text-[19px] leading-snug text-muted-foreground">{d}</p>
+              <span className="absolute right-5 top-5 font-mono text-[20px] text-primary">{["→", "↓", "←", "◎"][n]}</span>
+            </div>
+          ))}
         </div>
       </div>
     </Frame>
@@ -101,41 +92,71 @@ export function S02() {
 }
 
 export function S03() {
-  return <Divider n="01" title={["International", "Monetary System"]} sub="From gold to floating exchange rates" img={gold} page={3} presenter="Presenter 01 · History & Institutions" />;
+  const steps = [
+    ["1870s–1914", "Gold standard", "Currencies tied to gold"],
+    ["1944–1973", "Bretton Woods", "Currencies tied to the dollar; dollar tied to gold"],
+    ["1973 →", "Floating / managed / pegged", "Each country chooses its own regime"],
+    ["Today", "Global capital markets", "Capital moves across borders at scale"],
+  ];
+  return (
+    <Frame page={3} section="Roadmap" source={TB11 + " & 12"} title="From gold → dollars → floating currencies → global capital">
+      <div className="flex h-full flex-col">
+        <div className="relative mt-4">
+          <div className="bar-x absolute left-0 right-0 top-[11px] h-px bg-gold" />
+          <div className="grid grid-cols-4 gap-6">
+            {steps.map(([y, t, d], n) => (
+              <div key={t} className="anim" style={i(n + 1)}>
+                <span className="block h-6 w-6 rounded-full border-2 border-gold bg-background" />
+                <div className="mt-5 font-mono text-[20px] text-gold">{y}</div>
+                <div className="headline mt-2 text-[38px]">{t}</div>
+                <p className="mt-2 text-[20px] text-muted-foreground">{d}</p>
+                <span className="chip mt-4 inline-block text-primary">{n < 3 ? "Ch. 11" : "Ch. 12"}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="anim mt-auto grid grid-cols-3 gap-5" style={i(6)}>
+          {[["Exchange-rate stability", "Predictable prices for trade and investment"], ["Monetary-policy freedom", "Ability to fight unemployment or inflation at home"], ["Capital mobility", "Money can flow freely across borders"]].map(([t, d]) => (
+            <div key={t} className="cream p-5"><div className="text-[22px] font-semibold">{t}</div><div className="text-[17px] text-ink-soft">{d}</div></div>
+          ))}
+        </div>
+        <p className="anim mt-5 font-display text-[24px] italic" style={i(7)}>
+          The system evolved because countries repeatedly faced a trade-off between these three goals — no regime delivers all of them at once.
+        </p>
+      </div>
+    </Frame>
+  );
 }
 
 export function S04() {
-  const eras = [
-    { y: "1870s–1914", t: "Gold Standard", m: "Currencies pegged to gold; convertibility guaranteed", w: "Ties money supply to gold stock", c: "Collapses under WWI financing" },
-    { y: "1914–1939", t: "Wars & Breakdown", m: "Gold convertibility suspended; failed attempts to return", w: "Competitive devaluations", c: "Trade shrinks, loss of confidence" },
-    { y: "1944", t: "Bretton Woods", m: "Fixed rates; USD pegged to gold at $35/oz", w: "Depends on U.S. policy discipline", c: "IMF & World Bank created" },
-    { y: "1971–1973", t: "Collapse", m: "Nixon ends dollar–gold convertibility", w: "Speculation against the dollar", c: "Fixed-rate system abandoned" },
-    { y: "1976 →", t: "Mixed / Floating", m: "Jamaica Agreement: floating accepted", w: "Volatility", c: "Float, managed float, pegs coexist" },
-  ];
   return (
-    <Frame page={4} section="From Gold to Floating" lo="LO11-1" presenter={P1} source={TB11} title="How the global monetary system evolved" kicker="Each regime solved the previous problem — and created a new one.">
-      <div className="relative">
-        <div className="bar-x absolute left-0 right-0 top-[34px] h-px bg-gold" />
-        <div className="grid grid-cols-5 gap-5">
-          {eras.map((e, n) => (
-            <div key={e.t} className="anim" style={i(n + 1)}>
-              <div className="flex items-center gap-3">
-                <span className="h-4 w-4 rounded-full border-2 border-gold bg-background" />
-                <span className="font-mono text-[18px] text-gold">{e.y}</span>
-              </div>
-              <div className="cream mt-6 p-5">
-                <div className="headline text-[30px]">{e.t}</div>
-                <dl className="mt-4 space-y-3 text-[16px] leading-snug">
-                  <div><dt className="slide-label text-[11px] text-primary">Mechanism</dt><dd>{e.m}</dd></div>
-                  <div><dt className="slide-label text-[11px] text-destructive">Weakness</dt><dd>{e.w}</dd></div>
-                  <div><dt className="slide-label text-[11px] text-ink-soft">Consequence</dt><dd>{e.c}</dd></div>
-                </dl>
-              </div>
+    <Frame page={4} section="Chapter 11 · Gold Standard" lo="LO11-1" source={TB11 + ", The Gold Standard"} title="The gold standard: how money was tied to gold" kicker="Definition: a monetary system in which currencies were pegged to gold and governments guaranteed convertibility into gold.">
+      <div className="grid h-full grid-cols-[1fr_430px] gap-10">
+        <div className="flex flex-col gap-5">
+          <div className="anim flex items-center gap-3 text-[20px]" style={i(1)}>
+            {["Currency", "Fixed gold value", "Predictable exchange rate", "Cross-border trade becomes easier"].map((c, n, a) => (
+              <Fragment key={c}><span className="panel px-5 py-3">{c}</span>{n < a.length - 1 && <Arrow />}</Fragment>
+            ))}
+          </div>
+          <div className="anim cream p-7" style={i(2)}>
+            <div className="flex items-center justify-between"><span className="slide-label text-[12px] text-primary">Worked example</span><Tag kind="textbook" /></div>
+            <div className="mt-4 grid grid-cols-[1fr_1fr_auto_1fr] items-center gap-6">
+              <div><div className="headline text-[44px]">US$1</div><div className="text-[18px] text-ink-soft">= 23.22 grains of gold</div></div>
+              <div><div className="headline text-[44px]">£1</div><div className="text-[18px] text-ink-soft">= 113 grains of gold</div></div>
+              <span className="font-mono text-[28px] text-primary">→</span>
+              <div className="rounded-xl bg-primary p-4 text-primary-foreground"><div className="headline text-[46px]">£1 ≈ $4.87</div><div className="text-[15px]">113 ÷ 23.22</div></div>
             </div>
-          ))}
+            <p className="mt-4 text-[18px] text-ink-soft">Because both currencies had a fixed gold value, the exchange rate between them could be calculated directly — and stayed stable.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-5">
+            <Block n={3} tone="panel" label="Strength" title="Stability + automatic adjustment">A trade surplus brought gold in, raised the money supply and prices, and made exports less competitive — so trade balances corrected themselves.</Block>
+            <Block n={4} tone="panel" label="Weakness" title="Limited monetary-policy flexibility">The money supply was tied to gold, so governments could not freely expand money to fight recessions or unemployment.</Block>
+          </div>
         </div>
-        <div className="anim mt-8" style={i(7)}>
-          <Takeaway>The trade-off never disappears: stability and predictability versus monetary-policy freedom.</Takeaway>
+        <div className="anim relative overflow-hidden rounded-2xl" style={i(2)}>
+          <img src={gold} alt="Gold bars and historic banknotes" className="h-full w-full object-cover" loading="lazy" />
+          <div className="overlay-bottom absolute inset-0" />
+          <p className="absolute bottom-6 left-6 right-6 font-display text-[24px] italic">Gold → currency → exchange rate.</p>
         </div>
       </div>
     </Frame>
@@ -143,41 +164,31 @@ export function S04() {
 }
 
 export function S05() {
-  const chain = ["Trade surplus", "Gold inflow", "Money supply ↑", "Domestic prices ↑", "Exports less competitive", "Trade balance adjusts"];
+  const eras = [
+    ["World War I", ["Governments print money to finance the war", "Inflation rises", "Gold convertibility becomes difficult"]],
+    ["1920s", ["Countries try to restore the gold standard", "Britain returns at its prewar parity (1925)", "British goods become expensive → exports suffer"]],
+    ["1930s", ["Countries devalue competitively to win exports", "Confidence in gold convertibility collapses", "Countries suspend convertibility"]],
+    ["1939", ["The gold standard is effectively dead", "World trade has shrunk", "A new system is needed after the war"]],
+  ] as const;
   return (
-    <Frame page={5} section="Chapter 11 · Gold Standard" lo="LO11-1" presenter={P1} source={TB11 + ", Gold Standard"} title="The gold standard: stability at a price">
-      <div className="grid h-full grid-cols-[1fr_520px] gap-12">
-        <div className="flex flex-col gap-7">
-          <ul className="anim grid grid-cols-2 gap-x-10 gap-y-3 text-[21px]" style={i(1)}>
-            <li><span className="text-gold">■</span> Currencies <b>pegged to gold</b></li>
-            <li><span className="text-gold">■</span> Governments guaranteed <b>convertibility</b></li>
-            <li><span className="text-gold">■</span> Exchange rates <b>predictable</b></li>
-            <li><span className="text-destructive">■</span> But <b>monetary policy constrained</b></li>
-          </ul>
-          <div className="anim cream p-7" style={i(2)}>
-            <div className="slide-label text-[12px] text-primary">Automatic adjustment — balance-of-trade equilibrium</div>
-            <div className="mt-5 grid grid-cols-6 items-stretch gap-2">
-              {chain.map((c, n) => (
-                <div key={c} className="relative flex items-center justify-center rounded-lg border border-card-line px-2 py-5 text-center text-[17px] font-medium">
-                  {c}
-                  {n < chain.length - 1 && <span className="absolute -right-[11px] z-10 font-mono text-primary">→</span>}
-                </div>
-              ))}
+    <Frame page={5} section="Chapter 11 · Collapse of the Gold Standard" lo="LO11-1" source={TB11 + ", The Period between the Wars: 1918–1939"} title="The gold standard did not survive economic and political shocks">
+      <div className="flex h-full flex-col gap-6">
+        <div className="grid grid-cols-4 gap-4">
+          {eras.map(([t, items], n) => (
+            <div key={t} className="anim cream relative flex flex-col p-6" style={i(n + 1)}>
+              <div className="headline text-[38px] text-primary">{t}</div>
+              <ol className="mt-3 space-y-2 text-[18px]">
+                {items.map((x, k) => <li key={x} className="flex gap-2"><span className="font-mono text-gold">{k === 0 ? "•" : "→"}</span>{x}</li>)}
+              </ol>
+              {n < 3 && <span className="absolute -right-4 top-10 z-10 font-mono text-[24px] text-gold">→</span>}
             </div>
-          </div>
-          <div className="anim panel p-6" style={i(3)}>
-            <div className="slide-label text-[12px] text-destructive">Why it failed</div>
-            <div className="mt-3 flex flex-wrap items-center gap-3 text-[22px]">
-              {["World War I", "Inflation", "Competitive devaluation", "Loss of confidence", "Collapse"].map((c, n, a) => (
-                <span key={c} className="flex items-center gap-3">{c}{n < a.length - 1 && <Arrow />}</span>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
-        <div className="anim relative overflow-hidden rounded-2xl" style={i(2)}>
-          <img src={gold} alt="Gold bars and historic banknotes" className="h-full w-full object-cover" loading="lazy" />
-          <div className="overlay-bottom absolute inset-0" />
-          <p className="absolute bottom-6 left-6 right-6 font-display text-[26px] italic">Value anchored to metal — not to policy.</p>
+        <div className="anim panel p-6 text-[19px] text-muted-foreground" style={i(5)}>
+          <span className="text-foreground">Why the British return failed:</span> pegging the pound at its old, pre-war gold value overvalued it after wartime inflation. British exports became uncompetitive, unemployment rose, and pressure on the pound eventually forced Britain off gold (1931).
+        </div>
+        <div className="anim mt-auto" style={i(6)}>
+          <Takeaway label="Key conclusion">Fixed rules cannot survive if governments repeatedly violate the economic conditions required to maintain them.</Takeaway>
         </div>
       </div>
     </Frame>
@@ -185,34 +196,27 @@ export function S05() {
 }
 
 export function S06() {
-  const flow = [["44", "Countries"], ["", "Bretton Woods, NH · 1944"], ["", "Fixed exchange rates"], ["$35", "USD ↔ 1 oz gold"], ["", "IMF + World Bank"]];
+  const chain = ["Other currencies", "Pegged to the US dollar", "US dollar", "Convertible to gold", "$35 / ounce"];
   return (
-    <Frame page={6} section="Chapter 11 · Bretton Woods" lo="LO11-1" presenter={P1} source={TB11 + ", Bretton Woods System"} title="Bretton Woods: the world builds a new monetary order">
-      <div className="grid h-full grid-cols-[460px_1fr] gap-14">
-        <div className="flex flex-col items-stretch gap-2">
-          {flow.map(([big, t], n) => (
-            <div key={t} className="anim flex flex-col items-center" style={i(n + 1)}>
-              <div className={`${n === 3 ? "cream" : "panel"} flex w-full items-center justify-center gap-4 px-6 py-3`}>
-                {big && <span className={`headline text-[40px] ${n === 3 ? "" : "text-gold"}`}>{big}</span>}
-                <span className="text-[21px]">{t}</span>
-              </div>
-              {n < flow.length - 1 && <Arrow dir="down" className="text-[20px]" />}
+    <Frame page={6} section="Chapter 11 · Bretton Woods" lo="LO11-1" source={TB11 + ", The Bretton Woods System"} title="Bretton Woods: rebuilding the global monetary order" kicker="In 1944, representatives from 44 countries met at Bretton Woods, New Hampshire, to design a more stable postwar monetary system.">
+      <div className="grid h-full grid-cols-[420px_1fr] gap-12">
+        <div className="flex flex-col gap-1">
+          {chain.map((c, n) => (
+            <div key={c} className="anim flex flex-col items-center" style={i(n + 1)}>
+              <div className={`${n === 4 ? "cream" : "panel"} w-full px-6 py-3 text-center ${n === 4 ? "headline text-[40px]" : "text-[21px]"}`}>{c}</div>
+              {n < chain.length - 1 && <Arrow dir="down" className="text-[18px]" />}
             </div>
           ))}
         </div>
-        <div className="flex flex-col justify-between">
-          {[
-            ["Dollar-centred pegs", "Other currencies fixed against the U.S. dollar."],
-            ["Gold anchor", "Only the dollar was convertible to gold — at $35 per ounce."],
-            ["IMF oversight", "Monitored the system and lent to members facing short-term balance-of-payments pressure."],
-            ["Controlled flexibility", "Devaluations beyond 10% required IMF approval — preventing competitive devaluation."],
-            ["World Bank", "Financed post-war reconstruction and long-term economic development."],
-          ].map(([t, d], n) => (
-            <div key={t} className="anim grid grid-cols-[300px_1fr] gap-6 border-b border-line pb-4" style={i(n + 2)}>
-              <span className="text-[24px] font-semibold text-primary">{t}</span>
-              <span className="text-[21px] text-muted-foreground">{d}</span>
-            </div>
-          ))}
+        <div className="flex flex-col gap-5">
+          <Block n={2} label="Why the dollar?" title="The U.S. emerged from WWII with enormous economic and financial power">It held most of the world’s monetary gold, so a dollar convertible into gold was the most credible anchor available.</Block>
+          <div className="grid grid-cols-2 gap-5">
+            <Block n={3} label="Institution" title="IMF">Monetary stability and balance-of-payments support — lends to members facing short-term pressure, approves devaluations beyond 10%.</Block>
+            <Block n={4} label="Institution" title="World Bank">Economic development — originally postwar reconstruction, later long-term development financing.</Block>
+          </div>
+          <div className="anim mt-auto" style={i(6)}>
+            <Takeaway label="Key difference">Unlike the classical gold standard, Bretton Woods created international institutions to help enforce and manage the system.</Takeaway>
+          </div>
         </div>
       </div>
     </Frame>
@@ -221,33 +225,37 @@ export function S06() {
 
 export function S07() {
   return (
-    <Frame page={7} section="Chapter 11 · Collapse of the Fixed System" lo="LO11-1" presenter={P1} source={TB11 + ", The Collapse of the Fixed Exchange Rate System"} title="Why did fixed exchange rates break down?">
-      <div className="flex h-full flex-col gap-8">
-        <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4">
-          {["U.S. inflation (Vietnam war + Great Society spending)", "Growing U.S. balance-of-trade deficit", "Pressure on the dollar"].map((c, n) => (
-            <Fragment key={c}>
-              <div className="anim cream px-6 py-6 text-center text-[22px] font-medium" style={i(n + 1)}>{c}</div>
-              {n < 2 && <span className="anim headline text-[40px] text-gold" style={i(n + 1)}>+</span>}
-            </Fragment>
-          ))}
-        </div>
-        <div className="grid grid-cols-4 gap-4">
-          {[
-            ["Speculative pressure", "Markets bet on dollar devaluation"],
-            ["Gold convertibility strained", "Dollar claims exceed U.S. gold"],
-            ["1971 · Nixon", "Ends dollar–gold convertibility"],
-            ["1973", "Fixed-rate system collapses"],
-          ].map(([t, d], n) => (
-            <div key={t} className="anim panel relative p-6" style={i(n + 4)}>
-              <span className="font-mono text-[14px] text-primary">STEP {n + 1}</span>
-              <div className="mt-2 text-[24px] font-semibold">{t}</div>
-              <div className="mt-1 text-[18px] text-muted-foreground">{d}</div>
-              {n < 3 && <span className="absolute -right-4 top-1/2 z-10 -translate-y-1/2 font-mono text-[22px] text-gold">→</span>}
+    <Frame page={7} section="Chapter 11 · Collapse of the Fixed System" lo="LO11-1" source={TB11 + ", The Collapse of the Fixed Exchange Rate System"} title="Why did the fixed-rate system collapse in 1973?">
+      <div className="grid h-full grid-cols-[1fr_440px] gap-10">
+        <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-3">
+            {[["US inflation", "Financed by Vietnam War + Great Society spending"], ["Growing US trade deficit", "More dollars flowing abroad"], ["Pressure on the dollar", "Dollar seen as overvalued"]].map(([t, d], n) => (
+              <Fragment key={t}>
+                <div className="anim cream px-5 py-4 text-center" style={i(n + 1)}><div className="text-[21px] font-semibold">{t}</div><div className="text-[15px] text-ink-soft">{d}</div></div>
+                {n < 2 && <span className="headline text-[34px] text-gold">+</span>}
+              </Fragment>
+            ))}
+          </div>
+          {[["Speculative pressure", "Traders bet the dollar would be devalued and sold dollars"], ["Difficulty maintaining gold convertibility", "Foreign dollar holdings exceeded U.S. gold reserves"], ["1971 · Nixon ends dollar–gold convertibility", "The anchor of the system disappears"], ["1973 · Bretton Woods collapses", "Major currencies begin to float"]].map(([t, d], n) => (
+            <div key={t} className="anim flex items-center gap-4" style={i(n + 4)}>
+              <Arrow dir="down" className="w-6 text-[22px]" />
+              <div className="panel flex flex-1 items-baseline justify-between px-6 py-3"><span className="text-[21px] font-semibold">{t}</span><span className="text-[17px] text-muted-foreground">{d}</span></div>
             </div>
           ))}
         </div>
-        <div className="anim mt-auto" style={i(9)}>
-          <Takeaway>Exchange-rate systems are sustainable only when economic fundamentals and policy credibility support them.</Takeaway>
+        <div className="flex flex-col gap-5">
+          <div className="anim cream p-6" style={i(5)}>
+            <div className="slide-label text-[12px] text-primary">After 1973: a mixed system</div>
+            <ul className="mt-3 space-y-2 text-[19px]">
+              <li><b>Some currencies float</b> — e.g. USD, EUR, JPY</li>
+              <li><b>Some are managed</b> — central banks intervene</li>
+              <li><b>Some are pegged</b> — tied to another currency</li>
+            </ul>
+            <p className="mt-3 text-[16px] text-ink-soft">Formalized by the 1976 Jamaica Agreement.</p>
+          </div>
+          <div className="anim mt-auto" style={i(8)}>
+            <Takeaway label="Key insight">The collapse did not eliminate exchange-rate management. It changed how governments manage exchange rates.</Takeaway>
+          </div>
         </div>
       </div>
     </Frame>
@@ -255,144 +263,34 @@ export function S07() {
 }
 
 export function S08() {
-  const col = (name: string, role: string, items: string[], n: number) => (
-    <div className="anim cream flex flex-col p-8" style={i(n)}>
-      <div className="slide-label text-[12px] text-primary">{role}</div>
-      <div className="headline mt-2 text-[56px]">{name}</div>
-      <ul className="mt-6 space-y-3 text-[22px]">
-        {items.map((t) => <li key={t} className="border-b border-card-line pb-3">{t}</li>)}
-      </ul>
+  const col = (name: string, purpose: string, problems: string[], does: string[], n: number) => (
+    <div className="anim cream flex flex-col p-7" style={i(n)}>
+      <div className="headline text-[52px]">{name}</div>
+      <div className="slide-label mt-3 text-[12px] text-primary">Primary purpose</div>
+      <div className="text-[21px] font-semibold">{purpose}</div>
+      <div className="mt-4 grid grid-cols-2 gap-5">
+        <div><div className="slide-label text-[12px] text-primary">Main problems</div><ul className="mt-1 space-y-1 text-[17px]">{problems.map((x) => <li key={x}>• {x}</li>)}</ul></div>
+        <div><div className="slide-label text-[12px] text-primary">What it does</div><ul className="mt-1 space-y-1 text-[17px]">{does.map((x) => <li key={x}>• {x}</li>)}</ul></div>
+      </div>
     </div>
   );
   return (
-    <Frame page={8} section="Bretton Woods Institutions" lo="LO11-2" presenter={P2} source={TB11 + ", Role of the IMF and World Bank"} title="Two institutions, two core missions">
-      <div className="grid h-full grid-cols-[1fr_300px_1fr] gap-8">
-        {col("IMF", "Stability institution", ["Maintains international monetary order", "Balance-of-payments problems", "Financial-crisis support", "Loans with policy conditions (conditionality)"], 1)}
-        <div className="anim flex flex-col items-center justify-center gap-4 text-center" style={i(2)}>
-          <div className="rounded-full border border-gold px-6 py-6 text-[19px] leading-tight text-gold">International<br />Monetary<br />System</div>
-          <p className="text-[17px] text-muted-foreground">Both born at Bretton Woods, 1944. Roles now <em>overlap</em>: the IMF lends in crises, the World Bank also ties loans to policy reform.</p>
+    <Frame page={8} section="Bretton Woods Institutions" lo="LO11-2" source={TB11 + ", Role of the IMF and World Bank; Closing Case (Egypt)"} title="IMF and World Bank: same system, different jobs">
+      <div className="flex h-full flex-col gap-5">
+        <div className="grid grid-cols-2 gap-6">
+          {col("IMF", "Maintain monetary and financial stability", ["Balance-of-payments problems", "Currency crises", "Financial crises"], ["Lends to countries in crisis", "Provides policy guidance", "Supports macroeconomic adjustment"], 1)}
+          {col("World Bank", "Promote long-term economic development", ["Development financing", "Infrastructure", "Poverty & development challenges"], ["Provides development financing", "Supports long-term projects", "Builds capacity in developing economies"], 2)}
         </div>
-        {col("World Bank", "Development institution", ["Long-term economic development", "Infrastructure (dams, roads, energy)", "Poverty reduction & development projects", "IBRD loans · IDA low-interest credits"], 3)}
-      </div>
-    </Frame>
-  );
-}
-
-export function S09() {
-  const cell = (items: string[], good: boolean) => (
-    <ul className="space-y-2 text-[20px]">
-      {items.map((t) => (
-        <li key={t} className="flex gap-3"><span className={good ? "text-primary" : "text-destructive"}>{good ? "+" : "−"}</span>{t}</li>
-      ))}
-    </ul>
-  );
-  return (
-    <Frame page={9} section="The Regime Debate" lo="LO11-3" presenter={P2} source={TB11 + ", Fixed versus Floating Exchange Rates"} title="Fixed or floating — which system is better?">
-      <div className="flex h-full flex-col gap-6">
-        <div className="anim cream grid grid-cols-[220px_1fr_1fr] overflow-hidden" style={i(1)}>
-          <div />
-          <div className="border-l border-card-line p-5 headline text-[34px]">Fixed</div>
-          <div className="border-l border-card-line p-5 headline text-[34px]">Floating</div>
-          <div className="slide-label border-t border-card-line p-5 text-primary">Advantages</div>
-          <div className="border-l border-t border-card-line p-5">{cell(["Stability & predictability", "Monetary discipline (curbs inflation)", "Supports trade planning"], true)}</div>
-          <div className="border-l border-t border-card-line p-5">{cell(["Monetary-policy autonomy", "Automatic trade-balance adjustment", "Absorbs external shocks"], true)}</div>
-          <div className="slide-label border-t border-card-line p-5 text-destructive">Disadvantages</div>
-          <div className="border-l border-t border-card-line p-5">{cell(["Less policy autonomy", "Requires reserves & intervention", "Vulnerable to speculation"], false)}</div>
-          <div className="border-l border-t border-card-line p-5">{cell(["Volatility & uncertainty", "Higher transaction risk", "Complicates trade & investment"], false)}</div>
+        <div className="anim grid grid-cols-2 gap-6 text-center font-mono text-[18px] tracking-widest" style={i(3)}>
+          <span className="rounded-lg border border-primary py-2 text-primary">IMF = STABILITY / CRISIS</span>
+          <span className="rounded-lg border border-gold py-2 text-gold">WORLD BANK = DEVELOPMENT / LONG TERM</span>
         </div>
-        <div className="anim mt-auto" style={i(3)}>
-          <Takeaway label="Verdict">There is no universally superior regime — the choice reflects a country’s economic structure and policy priorities.</Takeaway>
-        </div>
-      </div>
-    </Frame>
-  );
-}
-
-export function S10() {
-  const regimes = [
-    ["Free float", "Market sets the rate", "USD · EUR · JPY · GBP", "Policy autonomy"],
-    ["Managed float", "Central bank intervenes (“dirty float”)", "China", "Stability + flexibility"],
-    ["Peg", "Fixed to a reference currency", "Many small trading economies", "Imported credibility"],
-    ["Currency board", "Domestic currency backed 100% by foreign reserves", "Hong Kong (HKD–USD)", "Hard commitment"],
-    ["Dollarization", "No separate legal tender", "Ecuador (since 2000)", "End chronic inflation"],
-  ];
-  return (
-    <Frame page={10} section="Exchange-Rate Regimes in Practice" lo="LO11-4" presenter={P2} source={TB11 + ", Exchange Rate Regimes in Practice; IMF classification"} title="The world doesn’t use one exchange-rate system" kicker="Per the textbook, ~21% of IMF members float freely; ~5% have no separate legal tender.">
-      <div className="flex h-full flex-col">
-        <div className="anim flex items-center justify-between font-mono text-[14px] uppercase tracking-widest text-muted-foreground" style={i(1)}>
-          <span>← More flexibility</span><span>More commitment →</span>
-        </div>
-        <div className="bar-x mt-3 h-[3px] bg-primary" style={i(1)} />
-        <div className="mt-6 grid grid-cols-5 gap-4">
-          {regimes.map(([t, d, ex, why], n) => (
-            <div key={t} className="anim cream flex flex-col p-5" style={i(n + 2)}>
-              <span className="font-mono text-[13px] text-gold">0{n + 1}</span>
-              <div className="headline mt-1 text-[28px]">{t}</div>
-              <p className="mt-3 text-[17px] leading-snug text-ink-soft">{d}</p>
-              <div className="mt-auto border-t border-card-line pt-3">
-                <div className="slide-label text-[11px] text-primary">Example</div>
-                <div className="text-[18px] font-semibold">{ex}</div>
-                <div className="slide-label mt-2 text-[11px] text-primary">Why choose it</div>
-                <div className="text-[17px]">{why}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="anim mt-5 text-[17px] italic text-muted-foreground" style={i(8)}>Categories are a spectrum — many countries sit between them or shift over time.</p>
-      </div>
-    </Frame>
-  );
-}
-
-export function S11() {
-  const data = [
-    { c: "USD", y20: 60.5, y24: 57.8 },
-    { c: "EUR", y20: 20.5, y24: 19.8 },
-    { c: "JPY", y20: null, y24: 5.8 },
-    { c: "CNY", y20: null, y24: 2.2 },
-  ];
-  const max = 65;
-  return (
-    <Frame page={11} section="Current Issue" lo="LO11-1 · LO11-4" presenter={P2} source="Source: Ch. 11 Opening Case (2020 baseline); IMF COFER, Q4 2024 (share of allocated reserves, %)" title="The dollar: still the center of the system?" kicker="Could the Chinese yuan seriously challenge the dollar?">
-      <div className="grid h-full grid-cols-[1fr_520px] gap-12">
-        <div className="anim cream flex flex-col p-8" style={i(1)}>
-          <div className="flex items-center justify-between">
-            <span className="slide-label text-[12px] text-ink-soft">Share of global FX reserves, %</span>
-            <span className="flex gap-5 text-[15px]">
-              <span className="flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-taupe" />2020 · textbook</span>
-              <span className="flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-primary" />Q4 2024 · IMF</span>
-            </span>
-          </div>
-          <div className="mt-6 flex flex-1 flex-col justify-around">
-            {data.map((d, n) => (
-              <div key={d.c} className="grid grid-cols-[70px_1fr] items-center gap-4">
-                <span className="font-mono text-[22px] font-semibold">{d.c}</span>
-                <div className="space-y-2">
-                  {d.y20 !== null && (
-                    <div className="flex items-center gap-3"><div className="bar-x h-5 rounded-sm bg-taupe" style={{ width: `${(d.y20 / max) * 100}%`, ...i(n) }} /><span className="text-[17px]">{d.y20}</span></div>
-                  )}
-                  <div className="flex items-center gap-3"><div className="bar-x h-5 rounded-sm bg-primary" style={{ width: `${(d.y24 / max) * 100}%`, ...i(n + 1) }} /><span className="text-[17px] font-semibold">{d.y24}</span></div>
-                </div>
-              </div>
+        <div className="anim panel flex items-center gap-4 p-5" style={i(4)}>
+          <span className="slide-label shrink-0 text-gold">Textbook case · Egypt 2016</span>
+          <div className="flex flex-wrap items-center gap-3 text-[19px]">
+            {["Reserves shrink", "Currency depreciation", "Import prices rise", "Inflation", "IMF financing + policy conditions"].map((c, n, a) => (
+              <Fragment key={c}><span>{c}</span>{n < a.length - 1 && <Arrow />}</Fragment>
             ))}
-          </div>
-        </div>
-        <div className="flex flex-col gap-5">
-          <div className="anim relative h-[170px] overflow-hidden rounded-2xl" style={i(2)}>
-            <img src={currencies} alt="Dollar, euro and yuan banknotes" className="h-full w-full object-cover" loading="lazy" />
-          </div>
-          <div className="anim" style={i(3)}>
-            <div className="slide-label text-gold">Why the dollar dominates (textbook)</div>
-            <ul className="mt-3 space-y-2 text-[19px]">
-              <li>• Size of the U.S. economy</li>
-              <li>• Liquidity of dollar assets (Treasuries)</li>
-              <li>• Confidence in U.S. institutions</li>
-              <li>• ~90% of FX transactions involve USD</li>
-              <li>• Yuan held back by capital controls</li>
-            </ul>
-          </div>
-          <div className="anim border-t border-line pt-4 text-[18px] text-muted-foreground" style={i(4)}>
-            <span className="text-foreground">Today:</span> the dollar’s share is slowly eroding — mostly toward smaller “non-traditional” currencies, not the yuan.
           </div>
         </div>
       </div>
