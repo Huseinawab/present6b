@@ -1,6 +1,7 @@
 import cover from "@/assets/cover.jpg";
 import gold from "@/assets/gold.jpg";
 import currencies from "@/assets/currencies.jpg";
+import { Fragment } from "react";
 import { Arrow, Frame, Takeaway, TB11, TOTAL, i } from "./primitives";
 
 const P1 = "Presenter 01";
@@ -224,10 +225,10 @@ export function S07() {
       <div className="flex h-full flex-col gap-8">
         <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4">
           {["U.S. inflation (Vietnam war + Great Society spending)", "Growing U.S. balance-of-trade deficit", "Pressure on the dollar"].map((c, n) => (
-            <>
-              <div key={c} className="anim cream px-6 py-6 text-center text-[22px] font-medium" style={i(n + 1)}>{c}</div>
+            <Fragment key={c}>
+              <div className="anim cream px-6 py-6 text-center text-[22px] font-medium" style={i(n + 1)}>{c}</div>
               {n < 2 && <span className="anim headline text-[40px] text-gold" style={i(n + 1)}>+</span>}
-            </>
+            </Fragment>
           ))}
         </div>
         <div className="grid grid-cols-4 gap-4">
